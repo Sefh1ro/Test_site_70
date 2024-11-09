@@ -20,6 +20,10 @@ header {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+<<<<<<< HEAD
+=======
+    transition: all 0.3s ease; /* Додаємо плавний перехід */
+>>>>>>> 9e006bc (add index.js (LB 2))
 }
 
 header h1 {
@@ -111,6 +115,24 @@ h3 {
     color: #2980b9;
 }
 
+<<<<<<< HEAD
+=======
+.fixed {
+    background: #353f51bc; /* Фон при прокручуванні */
+    position: sticky;
+    top: 0;
+    left: 0;
+    border-bottom: 2px solid silver;
+    z-index: 9999;
+    padding: 10px 40px; /* Зменшення padding при прокручуванні */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Додаємо тінь */
+}
+
+.fixed h1 {
+    font-size: 1.5em; /* Зменшення розміру заголовка */
+}
+
+>>>>>>> 9e006bc (add index.js (LB 2))
 /* Footer */
 footer {
     text-align: center;
