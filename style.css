@@ -20,15 +20,81 @@ header {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
-=======
     transition: all 0.3s ease; /* Додаємо плавний перехід */
->>>>>>> 9e006bc (add index.js (LB 2))
 }
 
 header h1 {
     font-size: 1.8em;
     font-weight: 500;
+}
+
+/* Приховуємо бургер-меню на десктопі */
+.burger-menu {
+    display: none; /* Показується лише на мобільних */
+    font-size: 24px;
+    cursor: pointer; /* Курсор змінюється на "руку" */
+    padding: 10px; /* Простір навколо іконки для зручного натискання */
+    color: #ecf0f1; /* Колір іконки */
+}
+
+/* Стиль для прихованого меню */
+#hidden-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Початкове положення за межами екрана */
+    width: 300px;
+    height: 100%;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+/* Стиль для кнопки закриття меню */
+#hidden-menu .close {
+    font-size: 24px;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 20px;
+    color: #ecf0f1;
+}
+
+
+#hidden-menu a {
+    color: #ffffff; /* Задає білий колір посиланням */
+    text-decoration: none; /* Прибирає підкреслення */
+}
+
+#hidden-menu a:hover {
+    color: #3498db; /* Колір при наведенні */
+}
+
+
+/* Показуємо основне меню на десктопі */
+.desktop-menu {
+    display: flex;
+    gap: 20px;
+}
+
+/* Приховуємо основне меню на мобільних, показуємо бургер-меню */
+@media (max-width: 992px) {
+    .desktop-menu {
+        display: none; /* Приховуємо основне меню */
+    }
+    .burger-menu {
+        display: inline; /* Показуємо бургер-меню */
+    }
+}
+
+/* Кнопка для прокрутки наверх */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+    display: none;
+    cursor: pointer;
 }
 
 nav ul {
@@ -115,10 +181,8 @@ h3 {
     color: #2980b9;
 }
 
-<<<<<<< HEAD
-=======
 .fixed {
-    background: #353f51bc; /* Фон при прокручуванні */
+    background: #353f51bc;; /* Фон при прокручуванні */
     position: sticky;
     top: 0;
     left: 0;
@@ -132,7 +196,6 @@ h3 {
     font-size: 1.5em; /* Зменшення розміру заголовка */
 }
 
->>>>>>> 9e006bc (add index.js (LB 2))
 /* Footer */
 footer {
     text-align: center;

@@ -12,15 +12,13 @@
 </head>
 <body>
 
-    <!-- Header -->
-<<<<<<< HEAD
-    <header>
-=======
     <header id="header">
->>>>>>> 9e006bc (add index.js (LB 2))
         <h1>🎬 Огляди фільмів</h1>
         <nav>
-            <ul>
+            <!-- Бургер-меню (видиме лише на мобільних пристроях) -->
+            <span id="show-menu" class="burger-menu">☰</span>
+            <!-- Основне меню (видиме лише на десктопі) -->
+            <ul class="desktop-menu">
                 <li><a href="#">Головна</a></li>
                 <li><a href="#">Популярні</a></li>
                 <li><a href="#">Останні огляди</a></li>
@@ -28,7 +26,21 @@
                 <li><a href="#">Контакти</a></li>
             </ul>
         </nav>
-    </header>
+    </header>    
+
+     <!-- Приховане меню -->
+     <div id="hidden-menu">
+        <span class="close">✕</span> <!-- Кнопка для закриття меню -->
+        <h2>Меню</h2>
+        <ul>
+            <li><a href="#">Головна</a></li>
+            <li><a href="#">Про компанію</a></li>
+            <li><a href="#">Послуги</a></li>
+        </ul>
+    </div>
+
+    <!-- Кнопка для прокручування сторінки наверх -->
+    <button id="scroll-to-top" class="scroll-to-top">⬆️</button>
 
     <!-- Перший блок -->
     <section class="hero">
@@ -89,9 +101,6 @@
             document.getElementById("latest-reviews").scrollIntoView({ behavior: "smooth" });
         }
     </script>
-<<<<<<< HEAD
-=======
     <script src="index.js"></script>
->>>>>>> 9e006bc (add index.js (LB 2))
 </body>
 </html>
