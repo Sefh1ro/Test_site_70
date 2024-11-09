@@ -196,6 +196,61 @@ h3 {
     font-size: 1.5em; /* Зменшення розміру заголовка */
 }
 
+
+
+
+/* Стиль для галереї */
+#gallery {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+/* Зображення в галереї */
+.image-gallery .picture {
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Початково приховані */
+    transition: opacity 0.5s ease; /* Плавне з'явлення */
+}
+
+.picture.show {
+    opacity: 1; /* Показуємо зображення */
+}
+
+.hidden {
+    display: none; /* Приховані зображення перед завантаженням */
+}
+
+/* Спінер */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1); /* Легка обводка */
+    border-top-color: #3498db; /* Колір передньої частини */
+    border-radius: 50%;
+    animation: spin 1s linear infinite; /* Анімація обертання */
+    margin: 20px auto; /* Центрування спінера */
+}
+
+/* Анімація обертання */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
 /* Footer */
 footer {
     text-align: center;

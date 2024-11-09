@@ -42,3 +42,57 @@ document.addEventListener("DOMContentLoaded", function() {
         hiddenMenu.style.right = "-300px";
     });
 });
+
+
+const imgURLArr = [
+    'img/1.png',
+    'img/2.png',
+    'img/3.png',
+    'img/4.png',
+    'img/5.png',
+    'img/6.png',
+    'img/7.png',
+    'img/8.png',
+    'img/9.png',
+    'img/10.png',
+    'img/11.png',
+    'img/12.png',
+    'img/13.png',
+    'img/14.png'
+];
+
+// Знаходимо галерею і спінер
+const gallery = document.querySelector(".image-gallery");
+const spinner = document.getElementById("spinner");
+
+const promiseArr = imgURLArr.map(url => {
+    return new Promise((resolve, reject) => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.classList.add("picture", "hidden");
+
+        // Завантаження успішне
+        img.addEventListener("load", () => {
+            resolve(img);
+        });
+
+        // Завантаження не вдалося
+        img.addEventListener("error", () => {
+            reject(`Помилка завантаження зображення: ${url}`);
+        });
+    });
+});
+
+// Чекаємо на завантаження всіх зображень
+Promise.all(promiseArr)
+    .then(images => {
+        spinner.style.display = "none"; // Приховуємо спінер
+        images.forEach(img => {
+            img.classList.remove("hidden");
+            img.classList.add("show");
+            gallery.appendChild(img); // Додаємо зображення в галерею
+        });
+    })
+    .catch(error => {
+        spinner.innerHTML = error; // Виводимо повідомлення про помилку
+    });
