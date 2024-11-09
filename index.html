@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Огляди фільмів</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>🎬 Огляди фільмів</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Головна</a></li>
+                <li><a href="#">Популярні</a></li>
+                <li><a href="#">Останні огляди</a></li>
+                <li><a href="#">Про нас</a></li>
+                <li><a href="#">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Перший блок -->
+    <section class="hero">
+        <h2>Відкрийте для себе найкращі фільми</h2>
+        <p>Ексклюзивні огляди, рейтинги та рекомендації для вас!</p>
+        <button onclick="scrollToReviews()">Переглянути огляди</button>
+    </section>
+
+    <!-- Другий блок -->
+    <section id="latest-reviews">
+        <h3>Останні огляди</h3>
+        <div class="reviews">
+            <div class="review">
+                <h4>Назва фільму 1</h4>
+                <p>Короткий опис фільму, що зацікавить глядачів...</p>
+                <a href="#">Детальніше</a>
+            </div>
+            <div class="review">
+                <h4>Назва фільму 2</h4>
+                <p>Короткий опис фільму, що зацікавить глядачів...</p>
+                <a href="#">Детальніше</a>
+            </div>
+            <div class="review">
+                <h4>Назва фільму 3</h4>
+                <p>Короткий опис фільму, що зацікавить глядачів...</p>
+                <a href="#">Детальніше</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Третій блок -->
+    <section id="top-rated">
+        <h3>Топ-рейтинг</h3>
+        <div class="top-movies">
+            <div class="movie">
+                <h4>Назва фільму A</h4>
+                <p>Оцінка: ⭐⭐⭐⭐</p>
+            </div>
+            <div class="movie">
+                <h4>Назва фільму B</h4>
+                <p>Оцінка: ⭐⭐⭐⭐⭐</p>
+            </div>
+            <div class="movie">
+                <h4>Назва фільму C</h4>
+                <p>Оцінка: ⭐⭐⭐⭐</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Огляди фільмів. Всі права захищені.</p>
+        <p>Зв'яжіться з нами: info@movie-reviews.ua</p>
+    </footer>
+
+    <script>
+        function scrollToReviews() {
+            document.getElementById("latest-reviews").scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+</body>
+</html>
