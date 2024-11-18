@@ -114,7 +114,7 @@ nav a:hover {
     color: #3498db;
 }
 
-/* Hero Section як слайдер */
+/* Hero Section */
 .hero {
     position: relative;
     text-align: center;
@@ -124,16 +124,43 @@ nav a:hover {
     background-repeat: no-repeat;
     transition: background-image 1.5s ease-in-out;
     color: #fff;
-    height: 400px; /* Висота блоку */
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-/* Додатковий контент у блоці hero */
+/* Додатковий контент */
 .hero-content {
     position: relative;
     z-index: 1;
+}
+
+/* Кнопки для слайдера */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: background-color 0.3s;
+    z-index: 2;
+}
+
+.slider-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.previous {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
 }
 
 .hero h2 {

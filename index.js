@@ -97,6 +97,9 @@ Promise.all(promiseArr)
         spinner.innerHTML = error; // Виводимо повідомлення про помилку
     });
 
+
+
+
     const heroSection = document.querySelector('.hero');
     const backgroundImages = [
         'img/1.png',
@@ -112,12 +115,31 @@ Promise.all(promiseArr)
     // Функція для зміни фону
     function changeBackground() {
         heroSection.style.backgroundImage = `url(${backgroundImages[currentSlide]})`;
-        currentSlide = (currentSlide + 1) % backgroundImages.length;
     }
     
     // Ініціалізація першого фону
     changeBackground();
     
-    // Зміна фону кожні 5 секунд
-    setInterval(changeBackground, 5000);
+    // Автоматична зміна фону кожні 5 секунд
+    let autoSlide = setInterval(nextSlide, 5000);
+    
+    // Показуємо наступний слайд
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % backgroundImages.length;
+        changeBackground();
+        resetAutoSlide();
+    }
+    
+    // Показуємо попередній слайд
+    function previousSlide() {
+        currentSlide = (currentSlide - 1 + backgroundImages.length) % backgroundImages.length;
+        changeBackground();
+        resetAutoSlide();
+    }
+    
+    // Оновлюємо автоматичне прокручування
+    function resetAutoSlide() {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(nextSlide, 5000);
+    }
     
