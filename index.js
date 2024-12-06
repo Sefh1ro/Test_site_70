@@ -102,12 +102,10 @@ Promise.all(promiseArr)
 
     const heroSection = document.querySelector('.hero');
     const backgroundImages = [
-        'img/1.png',
-        'img/2.png',
-        'img/3.png',
-        'img/4.png',
-        'img/5.png',
-        'img/6.png'
+        'hero/hero-image-1.jpg',
+        'hero/hero-image-2.jpg',
+        'hero/hero-image-3.jpg',
+        'hero/hero-image-4.jpg',
     ];
     
     let currentSlide = 0;
