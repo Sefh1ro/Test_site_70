@@ -142,9 +142,11 @@ Promise.all(promiseArr)
     }
 
 //Anime:
-// Анімація для всіх кнопок
+// Anime: Анімація для всіх кнопок
 document.querySelectorAll('button').forEach(button => {
+    // Анімація при наведенні миші
     button.addEventListener('mouseenter', () => {
+        anime.remove(button); // Скидаємо попередню анімацію
         anime({
             targets: button,
             scale: 1.2,
@@ -155,7 +157,9 @@ document.querySelectorAll('button').forEach(button => {
         });
     });
 
+    // Анімація при відведенні миші
     button.addEventListener('mouseleave', () => {
+        anime.remove(button); // Скидаємо попередню анімацію
         anime({
             targets: button,
             scale: 1,
@@ -166,7 +170,10 @@ document.querySelectorAll('button').forEach(button => {
         });
     });
 
+    // Анімація при кліку
     button.addEventListener('click', () => {
+        // Скидаємо трансформації перед новою анімацією
+        anime.set(button, { scale: 1, rotate: 0 });
         anime.timeline()
             .add({
                 targets: button,
@@ -188,6 +195,7 @@ document.querySelectorAll('button').forEach(button => {
             });
     });
 });
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const gallery = document.querySelector(".image-gallery");
@@ -235,4 +243,62 @@ document.addEventListener("DOMContentLoaded", function() {
         largeImage.src = clickedImage.src; 
         largeImageContainer.style.display = "flex";
     });
+});
+
+
+//КАЛЬКУЛЯТОР
+document.addEventListener("DOMContentLoaded", function () {
+    // Функціонал калькулятора
+    const ticketPriceInput = document.getElementById("ticket-price");
+    const ticketCountInput = document.getElementById("ticket-count");
+    const calculateBtn = document.getElementById("calculate-btn");
+    const result = document.querySelector("#result span");
+    const movieSelect = document.getElementById("movie-select");
+
+    // Звук для кнопки
+    const clickSound = new Audio("Jet Set Radio.mp3");
+
+    // При виборі фільму вставляємо ціну в інпут
+    movieSelect.addEventListener("change", function () {
+        const selectedPrice = parseFloat(movieSelect.value);
+        ticketPriceInput.value = selectedPrice; // Вставляємо ціну квитка
+    });
+
+    // Обробка натискання на кнопку розрахунку
+    calculateBtn.addEventListener("click", function () {
+        clickSound.play(); // Відтворення звуку
+
+        const price = parseFloat(ticketPriceInput.value);
+        const count = parseInt(ticketCountInput.value);
+
+        // Перевірка введених даних
+        if (isNaN(price) || isNaN(count) || price <= 0 || count <= 0) {
+            result.textContent = "Невірні дані!";
+            result.style.color = "#e74c3c";
+        } else {
+            const total = price * count;
+            result.textContent = `${total} грн`;
+            result.style.color = "#2c3e50";
+
+            // Показуємо вспливаючий надпис
+            showPopupMessage("+100 XP за божевільний трюк!");
+        }
+    });
+
+    // Функція для створення вспливаючого повідомлення
+    function showPopupMessage(text) {
+        const popup = document.createElement("div");
+        popup.classList.add("popup-message");
+        popup.textContent = text;
+        document.body.appendChild(popup);
+
+        // Додаємо клас для анімації появи
+        setTimeout(() => popup.classList.add("show"), 100);
+
+        // Прибираємо надпис через 3 секунди
+        setTimeout(() => {
+            popup.classList.remove("show");
+            setTimeout(() => popup.remove(), 500); // Видаляємо елемент з DOM
+        }, 3000);
+    }
 });

@@ -97,6 +97,33 @@
         </div>
     </section>
 
+    <!-- Калькулятор -->
+    <section id="calculator">
+        <h3>🎬 Калькулятор вартості перегляду</h3>
+        <div class="calculator-container">
+
+            <!-- Пресети для фільмів -->
+            <label for="movie-select">Оберіть фільм:</label>
+            <select id="movie-select">
+                <option value="" disabled selected>Виберіть фільм</option>
+                <option value="120">Фільм 1 - 120 грн</option>
+                <option value="150">Фільм 2 - 150 грн</option>
+                <option value="180">Фільм 3 - 180 грн</option>
+            </select>
+
+            <label for="ticket-price">Ціна квитка (грн):</label>
+            <input type="number" id="ticket-price" placeholder="Наприклад, 120">
+
+            <label for="ticket-count">Кількість квитків:</label>
+            <input type="number" id="ticket-count" placeholder="Наприклад, 2">
+
+            <button id="calculate-btn">Розрахувати</button>
+
+            <p id="result">Загальна вартість: <span>0 грн</span></p>
+        </div>
+    </section>
+
+
 
     <!-- Галерея зображень -->
     <section id="gallery">
