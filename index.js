@@ -140,4 +140,99 @@ Promise.all(promiseArr)
         clearInterval(autoSlide);
         autoSlide = setInterval(nextSlide, 5000);
     }
-    
+
+//Anime:
+// Анімація для всіх кнопок
+document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('mouseenter', () => {
+        anime({
+            targets: button,
+            scale: 1.2,
+            backgroundColor: '#2980b9',
+            boxShadow: '0px 10px 20px rgba(41, 128, 185, 0.5)',
+            duration: 500,
+            easing: 'easeInOutQuad',
+        });
+    });
+
+    button.addEventListener('mouseleave', () => {
+        anime({
+            targets: button,
+            scale: 1,
+            backgroundColor: '#3498db',
+            boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+            duration: 500,
+            easing: 'easeInOutQuad',
+        });
+    });
+
+    button.addEventListener('click', () => {
+        anime.timeline()
+            .add({
+                targets: button,
+                scale: 1.5,
+                duration: 300,
+                easing: 'easeOutQuad',
+            })
+            .add({
+                targets: button,
+                rotate: '1turn',
+                duration: 600,
+                easing: 'easeInOutSine',
+            })
+            .add({
+                targets: button,
+                scale: 1,
+                duration: 300,
+                easing: 'easeInOutQuad',
+            });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const gallery = document.querySelector(".image-gallery");
+    let largeImageContainer = null; // Створюємо змінну, але не ініціалізуємо
+
+    gallery.addEventListener("click", function(event) {
+        const clickedImage = event.target.closest("img"); // Шукаємо клік по зображенню
+        if (!clickedImage) return;
+
+        // Якщо контейнер ще не створено — створюємо його
+        if (!largeImageContainer) {
+            largeImageContainer = document.createElement("div");
+            const largeImage = document.createElement("img");
+
+            // Стилі для контейнера
+            largeImageContainer.id = "largeImageContainer";
+            largeImageContainer.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10000;
+            `;
+            largeImage.style.maxWidth = "90vw";
+            largeImage.style.maxHeight = "90vh";
+
+            largeImageContainer.appendChild(largeImage);
+            document.body.appendChild(largeImageContainer);
+
+            // Закриття великого зображення при кліку на контейнер
+            largeImageContainer.addEventListener("click", function(event) {
+                if (event.target === largeImageContainer) {
+                    largeImageContainer.style.display = "none";
+                }
+            });
+        }
+
+        // Відображаємо велике зображення
+        const largeImage = largeImageContainer.querySelector("img");
+        largeImage.src = clickedImage.src; 
+        largeImageContainer.style.display = "flex";
+    });
+});
