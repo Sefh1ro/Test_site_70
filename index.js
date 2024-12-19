@@ -302,3 +302,55 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 3000);
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+    const errorsContainer = document.getElementById("form-errors");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        errorsContainer.innerHTML = ""; // Очищаємо попередні помилки
+
+        // Отримуємо значення полів
+        const name = document.getElementById("name").value.trim();
+        const surname = document.getElementById("surname").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        let errors = [];
+
+        // Валідація Ім'я та Прізвище
+        const nameRegex = /^[a-zA-Zа-яА-Я'-]{3,}$/;
+        if (!name) errors.push("Поле 'Ім'я' обов'язкове.");
+        else if (!nameRegex.test(name)) errors.push("Ім'я може містити тільки літери, дефіси та апострофи (мінімум 3 символи).");
+
+        if (!surname) errors.push("Поле 'Прізвище' обов'язкове.");
+        else if (!nameRegex.test(surname)) errors.push("Прізвище може містити тільки літери, дефіси та апострофи (мінімум 3 символи).");
+
+        // Валідація Email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email) errors.push("Поле 'Email' обов'язкове.");
+        else if (!emailRegex.test(email)) errors.push("Некоректний формат Email.");
+
+        // Валідація Телефону
+        const phoneRegex = /^(\+38)?0\d{9}$/;
+        if (!phone) errors.push("Поле 'Телефон' обов'язкове.");
+        else if (!phoneRegex.test(phone)) errors.push("Телефон має бути у форматі: +380XXXXXXXXX або 0XXXXXXXXX.");
+
+        // Валідація Коментаря
+        if (!message) errors.push("Поле 'Коментар' обов'язкове.");
+
+        // Вивід помилок
+        if (errors.length > 0) {
+            errors.forEach(error => {
+                const errorItem = document.createElement("div");
+                errorItem.textContent = error;
+                errorsContainer.appendChild(errorItem);
+            });
+        } else {
+            errorsContainer.innerHTML = "<div style='color: green;'>Форму успішно надіслано!</div>";
+            form.reset();
+        }
+    });
+});
