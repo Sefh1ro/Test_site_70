@@ -197,12 +197,12 @@ document.querySelectorAll('button').forEach(button => {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const gallery = document.querySelector(".image-gallery");
-    let largeImageContainer = null; // Створюємо змінну, але не ініціалізуємо
+    let largeImageContainer = null;
 
-    gallery.addEventListener("click", function(event) {
-        const clickedImage = event.target.closest("img"); // Шукаємо клік по зображенню
+    gallery.addEventListener("click", function (event) {
+        const clickedImage = event.target.closest("img"); // Перевіряємо клік по зображенню
         if (!clickedImage) return;
 
         // Якщо контейнер ще не створено — створюємо його
@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.body.appendChild(largeImageContainer);
 
             // Закриття великого зображення при кліку на контейнер
-            largeImageContainer.addEventListener("click", function(event) {
+            largeImageContainer.addEventListener("click", function (event) {
                 if (event.target === largeImageContainer) {
                     largeImageContainer.style.display = "none";
                 }
