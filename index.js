@@ -248,44 +248,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //КАЛЬКУЛЯТОР
 document.addEventListener("DOMContentLoaded", function () {
-    // Функціонал калькулятора
-    const ticketPriceInput = document.getElementById("ticket-price");
-    const ticketCountInput = document.getElementById("ticket-count");
-    const calculateBtn = document.getElementById("calculate-btn");
-    const result = document.querySelector("#result span");
     const movieSelect = document.getElementById("movie-select");
+    const addTicketBtn = document.getElementById("add-ticket-btn");
+    const ticketCountDisplay = document.getElementById("ticket-count");
+    const totalPriceDisplay = document.getElementById("total-price-value");
+
+    let ticketCount = 0;
+    let ticketPrice = 0;
 
     // Звук для кнопки
     const clickSound = new Audio("Jet Set Radio.mp3");
 
-    // При виборі фільму вставляємо ціну в інпут
+    // Оновлення ціни квитка при виборі фільму
     movieSelect.addEventListener("change", function () {
-        const selectedPrice = parseFloat(movieSelect.value);
-        ticketPriceInput.value = selectedPrice; // Вставляємо ціну квитка
+        ticketPrice = parseFloat(movieSelect.value) || 0;
     });
 
-    // Обробка натискання на кнопку розрахунку
-    calculateBtn.addEventListener("click", function () {
+    // Додавання квитка
+    addTicketBtn.addEventListener("click", function () {
+        if (ticketPrice === 0) {
+            alert("Оберіть фільм перед додаванням квитків!");
+            return;
+        }
+
         clickSound.play(); // Відтворення звуку
 
-        const price = parseFloat(ticketPriceInput.value);
-        const count = parseInt(ticketCountInput.value);
+        ticketCount += 1; // Збільшення кількості квитків
+        const totalPrice = ticketCount * ticketPrice;
 
-        // Перевірка введених даних
-        if (isNaN(price) || isNaN(count) || price <= 0 || count <= 0) {
-            result.textContent = "Невірні дані!";
-            result.style.color = "#e74c3c";
-        } else {
-            const total = price * count;
-            result.textContent = `${total} грн`;
-            result.style.color = "#2c3e50";
+        // Оновлення відображення
+        ticketCountDisplay.textContent = ticketCount;
+        totalPriceDisplay.textContent = `${totalPrice} грн`;
 
-            // Показуємо вспливаючий надпис
-            showPopupMessage("+100 XP за божевільний трюк!");
-        }
+        // Показуємо спливаюче повідомлення
+        showPopupMessage("+100xp за божевільний трюк!");
     });
 
-    // Функція для створення вспливаючого повідомлення
+    // Функція для створення спливаючого повідомлення
     function showPopupMessage(text) {
         const popup = document.createElement("div");
         popup.classList.add("popup-message");
@@ -302,6 +301,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 3000);
     }
 });
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contact-form");
